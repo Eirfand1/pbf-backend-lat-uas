@@ -16,7 +16,8 @@ class Dosen extends ResourceController
      */
     public function index()
     {
-        //
+            $data = $this->model->findAll();
+        return $this->respond($data);
     }
 
     /**
@@ -28,7 +29,11 @@ class Dosen extends ResourceController
      */
     public function show($id = null)
     {
-        //
+          $data = $this->model->find($id);
+        if ($data) {
+            return $this->respond($data);
+        }
+        return $this->failNotFound('Dosen tidak ditemukan');
     }
 
     /**
@@ -48,7 +53,9 @@ class Dosen extends ResourceController
      */
     public function create()
     {
-        //
+         $input = $this->request->getJSON(true);
+        $this->model->insert($input);
+        return $this->respondCreated($input);
     }
 
     /**
@@ -72,7 +79,9 @@ class Dosen extends ResourceController
      */
     public function update($id = null)
     {
-        //
+        $input = $this->request->getJSON(true);
+        $this->model->update($id, $input);
+        return $this->respond(['status' => 'updated']);
     }
 
     /**
@@ -84,6 +93,7 @@ class Dosen extends ResourceController
      */
     public function delete($id = null)
     {
-        //
+        $this->model->delete($id);
+        return $this->respondDeleted(['status' => 'deleted']);
     }
 }
