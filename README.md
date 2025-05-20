@@ -5,7 +5,7 @@
 Clone repositori backend ke dalam direktori lokal:
 
 ```bash
-git clone https://github.com/abdau88/eval_pbf_backend.git
+git clone https://github.com/abdau88/eval_pbf_backend.git eval_pbf_backend
 cd eval_pbf_backend
 ```
 
@@ -22,7 +22,7 @@ composer install
 Salin file `.env.example` menjadi `.env` dan atur konfigurasi database:
 
 ```bash
-cp .env.example .env
+cp env .env
 ```
 
 Edit file `.env` dan sesuaikan dengan koneksi database lokal kamu:
@@ -41,26 +41,24 @@ database.default.DBDriver = MySQLi
 * Import file SQL berikut ke dalam database tersebut:
 
 ```sql
-CREATE TABLE `dosens` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `dosen` (
   `nama` varchar(100) NOT NULL,
   `nidn` varchar(20) NOT NULL,
   `email` varchar(100) NOT NULL,
   `prodi` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`nidn`)
 );
 
 INSERT INTO `dosens` (`nama`, `nidn`, `email`, `prodi`) VALUES
 ('Dr. Bambang', '12345678', 'bambang@kampus.ac.id', 'Teknik Informatika'),
 ('Dr. Siti', '87654321', 'siti@kampus.ac.id', 'Sistem Informasi');
 
-CREATE TABLE `mahasiswas` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `mahasiswa` (
   `nama` varchar(100) NOT NULL,
   `nim` varchar(20) NOT NULL,
   `email` varchar(100) NOT NULL,
   `prodi` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`npm`)
 );
 
 INSERT INTO `mahasiswas` (`nama`, `nim`, `email`, `prodi`) VALUES
