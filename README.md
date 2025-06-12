@@ -58,7 +58,7 @@ CREATE TABLE `mahasiswa` (
   `nim` varchar(20) NOT NULL,
   `email` varchar(100) NOT NULL,
   `prodi` varchar(100) NOT NULL,
-  PRIMARY KEY (`npm`)
+  PRIMARY KEY (`nim`)
 );
 
 INSERT INTO `mahasiswas` (`nama`, `nim`, `email`, `prodi`) VALUES
