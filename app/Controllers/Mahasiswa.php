@@ -7,7 +7,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class Mahasiswa extends ResourceController
 {
-      protected $modelName = 'App\Models\MahasiswaModel';
+    protected $modelName = 'App\Models\MahasiswaModel';
     protected $format    = 'json';
     /**
      * Return an array of resource objects, themselves in array format.
@@ -17,8 +17,7 @@ class Mahasiswa extends ResourceController
     public function index()
     {
            $data = $this->model
-            ->select('mahasiswa.*, dosen.nama as dosen_wali')
-            ->join('dosen', 'dosen.id = mahasiswa.dosen_wali_id')
+            ->select('*')
             ->findAll();
 
         return $this->respond($data);
@@ -97,7 +96,7 @@ class Mahasiswa extends ResourceController
      */
     public function delete($id = null)
     {
-         $this->model->delete($id);
+        $this->model->delete($id);
         return $this->respondDeleted(['status' => 'deleted']);
     }
 }
